@@ -46,4 +46,46 @@ const modal = document.getElementById("mdAgregar");
 
 const btnadd = document.getElementById("btnAdd");
 
-const btnclose = document.getElementById("btnCloseModal");s
+const btnclose = document.getElementById("btnCloseModal");
+
+btnadd.addEventListener("click", ()=>{
+    modal.showModal(); //Se abre el modal al hacer clic
+})
+
+btnclose.addEventListener("click", ()=> {
+    modal.close(); //Se cierra el modal
+})
+
+//Agregar un nuevo integrante desde el formulario
+document.getElementById("frmAdd").addEventListener("submit", async e => {
+    e.preventDefault(); //Evita que los datos se envien por defectos
+
+    //Capturar los valores del formulario
+    const nombre = document.getElementById("txtName").value.trim();
+    const apellidos = document.getElementById("txtLastName").value.trim();
+    const correo = document.getElementById("txtEmail").value.trim();
+
+    if(!nombre || !apellidos || !correo){
+        alert("Complete los campos");
+        return; //Evita que se siga ejecutando el codigo
+    }
+
+    //Llamar a la Api para los datos
+    const respuesta = await fetch(API_URL, {
+        method: "POST",
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify({nombre,apellidos,correo})
+    });
+
+    if(respuesta.ok){
+        alert("El registro fue agregado correctamente");
+
+        //Limpiar el formulario
+        document.getElementById("frmAgregar").reset();
+
+        //Cerrar el modal
+        modal.close();
+    }else{
+        alert("Hubo un error al guardar");
+    }
+});
