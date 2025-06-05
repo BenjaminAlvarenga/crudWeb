@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modals</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+>
+</head>
+<body>
+    <dialog id="mdAgregar" open="">
+        <article>
+            <header>
+                <a href="#" class="close" id="btnCloseModal"></a>
+                <h3>Borrar Integrante</h3>
+            </header>
+            <formc class="frmAdd">
+                <input type="text" id="txtName" placeholder="Name" required>
+                <input type="text" id="txtLastName" placeholder="LastName" required>
+                <input type="text" id="txtEmail" placeholder="Email" required>
+                <button type="submit" class="contrast">Guardar Registro</button>
+            </form>
+        </article>
+    </dialog>
+</body>
+</html>

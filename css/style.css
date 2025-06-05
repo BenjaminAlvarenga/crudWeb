@@ -1,0 +1,25 @@
+.add-button{
+    position: fixed; /*El boton flota*/
+    border-radius: 50%;
+    bottom: 45px; /*Separacion de abajo*/
+    right: 45px;
+    background-color: skyblue;
+    border: none; /*Para quitar los bordes*/
+
+    width: 70px;
+    height: 70px;
+
+    box-shadow: 0 4px rgba(0, 0, 0, 0.5); /*La sombrita del boton*/
+
+    z-index: 1000; /*Para que este encima de todo*/
+
+    transition: transform 0.5s; /*Duracion de efecto*/
+}
+
+.add-button:hover{
+    transform:scale(1.5);
+}
+
+.tabla-scroll{
+    overflow-x: auto;
+}
