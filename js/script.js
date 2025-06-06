@@ -34,7 +34,7 @@ function MostrarRegistros(datos){
                 <td>${persona.correo}</td>
                 <td>
                     <button>Editar</button>
-                    <button>Eliminar</button>
+                    <button onclick="EliminarRegistro(${persona.id})">Eliminar</button>
                 </td>
             </tr>
         `
@@ -81,11 +81,30 @@ document.getElementById("frmAdd").addEventListener("submit", async e => {
         alert("El registro fue agregado correctamente");
 
         //Limpiar el formulario
-        document.getElementById("frmAgregar").reset();
+        document.getElementById("frmAdd").reset();
+
+        await ObtenerRegistros();
 
         //Cerrar el modal
         modal.close();
+
     }else{
         alert("Hubo un error al guardar");
     }
 });
+
+//Funcion para borrar registros
+
+async function EliminarRegistro(id){
+    const confirmacion = confirm("¿Desea eliminar este registro?");
+
+    //Validamos si el usuario eligió aceptar
+    if(confirmacion){
+        await fetch(`${API_URL}/${id}`, {
+            method: "DELETE"
+        }); //Llamada al endpoint
+
+        //Recargar la tabla para actualizar la vista
+        ObtenerRegistros();
+    }
+}
